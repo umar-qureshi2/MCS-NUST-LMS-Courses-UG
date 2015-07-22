@@ -1,0 +1,62 @@
+<%-- 
+    Document   : index.jsp
+    Created on : Oct 21, 2010, 9:24:54 AM
+    Author     : awais
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%!
+    int view=0; //default set to 'simple' view
+%>
+
+<%
+//view=Integer.parseInt(request.getParameter("view"));
+%>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Defining Workflow</title>
+    </head>
+    <body>
+        <h2> </h2>
+        
+        <%
+        if(view==0)
+            out.println("Current View: Simple");
+        else
+            out.println("Current View: Advanced");
+        %>
+        <form name="toggle_view" action="index.jsp" >
+            <%
+            if (view==0){
+                out.println("<input type='hidden' name='view' value='1'>");
+                out.println("<input type='submit' value='Change to Advance'>");
+		view=1;
+               
+           } 
+           else{
+                out.println("<input type='hidden' name='view' value='0'>");
+                out.println("<input type='submit' value='Change to Simple'>");
+		view=0;
+                
+           } 
+            %>
+      
+        </form>
+        <hr>
+            
+            <form name="login" action="auth.jsp" method="post">
+                User Name: <input type="text" name="username"> <br>
+                Password: <input type="password" name="pword"> <br>
+               <input type="submit" value="Login">
+            </form>
+       
+       <%
+       if(view==1){
+           out.println("<HR>");
+           out.println("<b>Debugging Info</b>");
+           }
+       %>
+            
+    </body>
+</html>
